@@ -1,8 +1,8 @@
--- import: fifthtry.github.io/app-switcher/assets
--- import: fifthtry.github.io/package-doc/doc as pd
--- import: fifthtry.github.io/package-doc/code-block as cb
+-- import: fastn-community.github.io/app-switcher/assets
 -- import: fastn
 -- import: fastn/processors
+-- import: fastn-community.github.io/site-doc
+-- import: fastn-community.github.io/code-block as cb
 
 -- fastn.app-ui apps:
 $processor$: processors.fastn-apps
@@ -11,19 +11,42 @@ $processor$: processors.fastn-apps
 
 
 
+-- site-doc.doc-home: App Switcher
+github-url: https://github.com/fastn-community/app-switcher
+color-scheme: \$ftd.default-colors
+typography: \$ftd.default-types
+current-package: fastn-community.github.io/app-switcher
+show-tabs: false
+site-title: App Switcher
+
+-- site-doc.header: What is a app switcher?
+
+The app-switcher is a useful tool for multitasking, as it allows users to
+quickly switch between different apps without having to close and reopen them.
+This can be particularly helpful when working on a project that requires
+multiple applications in a web browser.
+
+Fastn app-switcher component opens by pressing `shift` key two times.
+
+-- site-doc.header: How to install fastn?
+
+Please, [click here](https://fastn.io/install/) to read fastn installation
+documentation.
 
 
+-- site-doc.header: How to use `app-switcher`?
 
+To use `app-switcher` add below lines into your FASTN.ftd file:
 
--- ftd.column:
-background.solid: $inherited.colors.background.step-1
-width: fill-container
-height: fill-container
+To learn more about app-switcher 
+[click here](https://fastn-community.github.io/app-switcher/docs/).
 
--- app-switcher:
-apps: $apps
+-- cb.code:
+lang: ftd
 
--- end: ftd.column
+\-- fastn.dependency: fastn-community.github.io/app-switcher
+
+-- end: site-doc.doc-home
 
 
 
@@ -43,6 +66,8 @@ integer $current-app: 1
 width: fill-container
 height: fill-container
 
+-- ftd.desktop:
+
 -- ftd.column:
 if: { app-switcher.is-open }
 width: fill-container
@@ -51,8 +76,8 @@ align-content: center
 if: { !ftd.is_empty(apps.items) }
 anchor: window
 z-index: 999999
-
--- ftd.desktop:
+left.px: 0
+top.px: 0
 
 -- ftd.column:
 width: fill-container
@@ -121,6 +146,8 @@ $current-app: $app-switcher.current-app
 
 -- end: ftd.column
 
+-- end: ftd.column
+
 -- end: ftd.desktop
 
 -- ftd.mobile:
@@ -131,7 +158,6 @@ width: fill-container
 height: fill-container
 
 -- ftd.image:
-if: { !app-switcher.is-open }
 src: $assets.files.images.app-switcher-mobile.svg
 anchor: window
 left.px: 14
@@ -147,6 +173,9 @@ width: fill-container
 height: fill-container
 align-content: center
 background.solid: $inherited.colors.background.overlay
+anchor: window
+left.px: 0
+top.px: 0
 
 -- ftd.column:
 width: fill-container
@@ -200,9 +229,6 @@ $current-app: $app-switcher.current-app
 -- end: ftd.row
 
 -- end: ftd.mobile
-
--- end: ftd.column
-
 -- end: ftd.column
 
 -- end: app-switcher
